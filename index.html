@@ -1,0 +1,2229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glaciers Pastry Shop — Crêpes &amp; Mochi Desserts</title>
+
+  <!-- Google Fonts: Fredoka (playful rounded headings) & Quicksand (clean, friendly body text) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* ==========================================================================
+       1. THEME COLOR VARIABLES (CUSTOMIZE COLORS HERE)
+       Default theme: "Lavender Dream" (Soft Lavender, Milky White & Pastel Pink)
+       ========================================================================== */
+    :root {
+      --bg-page: #fdfbff;
+      --bg-surface: #ffffff;
+      --bg-soft-lavender: #f3ecff;
+      --bg-soft-pink: #fff0f6;
+      --lavender-100: #efe6ff;
+      --lavender-200: #d9c4ff;
+      --lavender-400: #b38df7;
+      --lavender-600: #8c5ce6;
+      --pink-100: #ffe4ef;
+      --pink-200: #ffc2dc;
+      --pink-400: #ff8ec0;
+      --pink-600: #e5639c;
+      --text-main: #35294c;
+      --text-muted: #6c5e85;
+      --border-soft: rgba(155, 118, 224, 0.22);
+      --shadow-card: 0 14px 34px rgba(133, 94, 209, 0.11);
+      --shadow-hover: 0 22px 44px rgba(229, 99, 156, 0.2);
+      --hero-gradient: linear-gradient(135deg, #f5eeff 0%, #ffffff 52%, #ffeaf3 100%);
+      --btn-gradient: linear-gradient(135deg, #a678f5 0%, #ff8ec0 100%);
+      --btn-hover-gradient: linear-gradient(135deg, #9461ec 0%, #f776b0 100%);
+      --badge-bg: #f6efff;
+      --badge-text: #7c4ad9;
+      --success-bg: #eefcf5;
+      --success-border: #8be0b8;
+      --success-text: #1c6b49;
+      --error-bg: #fff1f5;
+      --error-border: #ff8ab5;
+      --error-text: #b8295b;
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --radius-pill: 999px;
+      --transition-smooth: all 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Alternate Theme: "Strawberry Milk" (Pastel Pink & Creamy Lavender) */
+    body.theme-strawberry {
+      --bg-page: #fffafb;
+      --bg-surface: #ffffff;
+      --bg-soft-lavender: #f7f0ff;
+      --bg-soft-pink: #ffe8f2;
+      --lavender-100: #f4ebff;
+      --lavender-200: #dfc8ff;
+      --lavender-400: #c08df5;
+      --lavender-600: #9b5de5;
+      --pink-100: #ffdbe9;
+      --pink-200: #ffb3d1;
+      --pink-400: #ff77b0;
+      --pink-600: #df4d8b;
+      --text-main: #3d2438;
+      --text-muted: #76536d;
+      --border-soft: rgba(235, 117, 169, 0.25);
+      --shadow-card: 0 14px 34px rgba(223, 77, 139, 0.11);
+      --shadow-hover: 0 22px 44px rgba(155, 93, 229, 0.18);
+      --hero-gradient: linear-gradient(135deg, #ffeaf3 0%, #ffffff 52%, #f3eaff 100%);
+      --btn-gradient: linear-gradient(135deg, #ff7eb6 0%, #b583f7 100%);
+      --btn-hover-gradient: linear-gradient(135deg, #f363a2 0%, #a26be9 100%);
+      --badge-bg: #ffeaf3;
+      --badge-text: #c93b78;
+    }
+
+    /* ==========================================================================
+       2. BASE & RESET STYLES
+       ========================================================================== */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 84px;
+    }
+
+    body {
+      font-family: "Quicksand", -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.65;
+      overflow-x: hidden;
+      transition: background-color 0.35s ease, color 0.35s ease;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    .brand-name {
+      font-family: "Fredoka", "Quicksand", sans-serif;
+      color: var(--text-main);
+      letter-spacing: -0.01em;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font-family: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .section {
+      padding: 84px 0;
+    }
+
+    .section-alt {
+      background: linear-gradient(180deg, rgba(243, 236, 255, 0.55) 0%, rgba(255, 240, 246, 0.55) 100%);
+      border-top: 1px solid var(--border-soft);
+      border-bottom: 1px solid var(--border-soft);
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 48px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      border: 1px solid var(--border-soft);
+    }
+
+    .section-title {
+      font-size: clamp(1.9rem, 3.6vw, 2.65rem);
+      line-height: 1.18;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      font-size: 1.03rem;
+    }
+
+    /* ==========================================================================
+       3. STICKY NAVIGATION BAR
+       ========================================================================== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-soft);
+      transition: var(--transition-smooth);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 74px;
+      gap: 16px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      font-weight: 700;
+      font-size: 1.25rem;
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: var(--btn-gradient);
+      display: grid;
+      place-items: center;
+      color: #ffffff;
+      box-shadow: 0 8px 18px rgba(166, 120, 245, 0.28);
+      flex-shrink: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-weight: 600;
+      font-size: 0.96rem;
+      color: var(--text-muted);
+      position: relative;
+      padding: 6px 0;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2.5px;
+      border-radius: 99px;
+      background: var(--btn-gradient);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text-main);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .theme-btn,
+    .bag-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 15px;
+      border-radius: var(--radius-pill);
+      border: 1.5px solid var(--border-soft);
+      background: #ffffff;
+      color: var(--text-main);
+      font-weight: 700;
+      font-size: 0.86rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+      white-space: nowrap;
+    }
+
+    .theme-btn:hover,
+    .bag-btn:hover {
+      transform: translateY(-2px);
+      border-color: var(--lavender-400);
+      box-shadow: 0 8px 20px rgba(140, 92, 230, 0.14);
+    }
+
+    .bag-count {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 22px;
+      height: 22px;
+      padding: 0 6px;
+      border-radius: var(--radius-pill);
+      background: var(--btn-gradient);
+      color: #ffffff;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border-soft);
+      background: #ffffff;
+      color: var(--text-main);
+      font-size: 1.25rem;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ==========================================================================
+       4. HERO SECTION (HOME)
+       ========================================================================== */
+    .hero {
+      position: relative;
+      background: var(--hero-gradient);
+      padding: 64px 0 78px;
+      border-bottom: 1px solid var(--border-soft);
+      overflow: hidden;
+    }
+
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(55px);
+      opacity: 0.65;
+      pointer-events: none;
+      animation: floatOrb 7s ease-in-out infinite;
+    }
+
+    .orb-one {
+      width: 270px;
+      height: 270px;
+      background: var(--lavender-200);
+      top: -60px;
+      left: -60px;
+    }
+
+    .orb-two {
+      width: 310px;
+      height: 310px;
+      background: var(--pink-200);
+      bottom: -80px;
+      right: -50px;
+      animation-delay: -3.5s;
+    }
+
+    @keyframes floatOrb {
+      0%, 100% {
+        transform: translateY(0px) scale(1);
+      }
+      50% {
+        transform: translateY(-16px) scale(1.04);
+      }
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-size: clamp(2.45rem, 5vw, 3.7rem);
+      line-height: 1.08;
+      margin-bottom: 16px;
+    }
+
+    .hero-title span {
+      background: var(--btn-gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-tagline {
+      font-size: 1.12rem;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin-bottom: 28px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 30px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 26px;
+      border-radius: var(--radius-pill);
+      background: var(--btn-gradient);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.98rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 12px 24px rgba(166, 120, 245, 0.28);
+      transition: var(--transition-smooth);
+    }
+
+    .btn-primary:hover {
+      background: var(--btn-hover-gradient);
+      transform: translateY(-2px);
+      box-shadow: 0 16px 30px rgba(229, 99, 156, 0.32);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 13px 24px;
+      border-radius: var(--radius-pill);
+      background: #ffffff;
+      color: var(--text-main);
+      font-weight: 700;
+      font-size: 0.98rem;
+      border: 1.5px solid var(--border-soft);
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      border-color: var(--pink-400);
+      background: var(--bg-soft-pink);
+    }
+
+    .hero-perks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    .hero-perks span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 7px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--border-soft);
+    }
+
+    .hero-visual {
+      display: grid;
+      gap: 18px;
+    }
+
+    .hero-photo-frame {
+      position: relative;
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      padding: 12px;
+      border: 2px solid rgba(255, 255, 255, 0.95);
+      box-shadow: var(--shadow-card);
+    }
+
+    .hero-photo-frame img {
+      width: 100%;
+      height: 310px;
+      object-fit: cover;
+      border-radius: 20px;
+    }
+
+    .hero-caption-pill {
+      position: absolute;
+      bottom: 22px;
+      left: 22px;
+      right: 22px;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(8px);
+      padding: 12px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--border-soft);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .hero-caption-pill strong {
+      font-size: 0.95rem;
+      display: block;
+    }
+
+    .hero-caption-pill small {
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .illustration-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .mini-illustration-card {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1.5px solid var(--border-soft);
+      border-radius: var(--radius-lg);
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 10px 24px rgba(140, 92, 230, 0.08);
+      transition: var(--transition-smooth);
+    }
+
+    .mini-illustration-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--pink-400);
+    }
+
+    .mini-illustration-card svg {
+      width: 64px;
+      height: 64px;
+      flex-shrink: 0;
+    }
+
+    .mini-illustration-card strong {
+      display: block;
+      font-size: 0.92rem;
+    }
+
+    .mini-illustration-card span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       5. FEATURED MENU & STATIONS GRID
+       ========================================================================== */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 34px;
+    }
+
+    .filter-btn {
+      padding: 9px 18px;
+      border-radius: var(--radius-pill);
+      border: 1.5px solid var(--border-soft);
+      background: #ffffff;
+      color: var(--text-muted);
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .filter-btn:hover {
+      border-color: var(--lavender-400);
+      color: var(--text-main);
+    }
+
+    .filter-btn.active {
+      background: var(--btn-gradient);
+      color: #ffffff;
+      border-color: transparent;
+      box-shadow: 0 8px 18px rgba(166, 120, 245, 0.25);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+
+    .menu-card {
+      background: var(--bg-surface);
+      border: 1.5px solid var(--border-soft);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition-smooth);
+    }
+
+    .menu-card:hover {
+      transform: translateY(-7px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--pink-200);
+    }
+
+    .menu-media {
+      position: relative;
+      height: 215px;
+      background: var(--bg-soft-lavender);
+      overflow: hidden;
+    }
+
+    .menu-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+
+    .menu-card:hover .menu-media img {
+      transform: scale(1.05);
+    }
+
+    .menu-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--badge-text);
+      font-size: 0.78rem;
+      font-weight: 700;
+      border: 1px solid var(--border-soft);
+    }
+
+    .menu-body {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .menu-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+
+    .menu-top h3 {
+      font-size: 1.22rem;
+      line-height: 1.25;
+    }
+
+    .menu-price {
+      font-family: "Fredoka", sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--pink-600);
+      white-space: nowrap;
+    }
+
+    .menu-desc {
+      color: var(--text-muted);
+      font-size: 0.94rem;
+      margin-bottom: 18px;
+      flex: 1;
+    }
+
+    .menu-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding-top: 14px;
+      border-top: 1px dashed var(--border-soft);
+    }
+
+    .qty-stepper {
+      display: inline-flex;
+      align-items: center;
+      background: var(--bg-soft-lavender);
+      border-radius: var(--radius-pill);
+      padding: 3px;
+      border: 1px solid var(--border-soft);
+    }
+
+    .qty-stepper button {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: none;
+      background: #ffffff;
+      color: var(--text-main);
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .qty-stepper button:hover {
+      background: var(--pink-100);
+    }
+
+    .qty-stepper span {
+      min-width: 28px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.92rem;
+    }
+
+    .add-bag-btn {
+      flex: 1;
+      padding: 10px 16px;
+      border-radius: var(--radius-pill);
+      border: none;
+      background: var(--btn-gradient);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: var(--transition-smooth);
+    }
+
+    .add-bag-btn:hover {
+      background: var(--btn-hover-gradient);
+      transform: translateY(-1px);
+    }
+
+    /* ==========================================================================
+       6. RATES, PROMOS & SWEET BOX ESTIMATOR
+       ========================================================================== */
+    .rates-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 44px;
+    }
+
+    .rate-card {
+      background: #ffffff;
+      border: 1.5px solid var(--border-soft);
+      border-radius: var(--radius-xl);
+      padding: 28px 24px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition-smooth);
+    }
+
+    .rate-card.featured {
+      background: linear-gradient(165deg, #ffffff 0%, #fff2f8 100%);
+      border-color: var(--pink-400);
+    }
+
+    .rate-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .rate-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 6px;
+    }
+
+    .rate-amount {
+      font-family: "Fredoka", sans-serif;
+      font-size: 2rem;
+      color: var(--lavender-600);
+      margin: 10px 0 14px;
+    }
+
+    .rate-amount span {
+      font-family: "Quicksand", sans-serif;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .rate-list {
+      list-style: none;
+      display: grid;
+      gap: 9px;
+      margin-bottom: 20px;
+      color: var(--text-muted);
+      font-size: 0.94rem;
+      flex: 1;
+    }
+
+    .rate-list li::before {
+      content: "✦ ";
+      color: var(--pink-600);
+      font-weight: 700;
+    }
+
+    .estimator-box {
+      background: #ffffff;
+      border: 2px solid var(--border-soft);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+      box-shadow: var(--shadow-card);
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .estimator-controls {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .field-group label {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: var(--text-main);
+    }
+
+    .field-group select,
+    .field-group input,
+    .field-group textarea {
+      width: 100%;
+      padding: 12px 15px;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--border-soft);
+      background: var(--bg-page);
+      color: var(--text-main);
+      font-size: 0.95rem;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .field-group select:focus,
+    .field-group input:focus,
+    .field-group textarea:focus {
+      outline: none;
+      border-color: var(--lavender-600);
+      background: #ffffff;
+      box-shadow: 0 0 0 4px rgba(166, 120, 245, 0.14);
+    }
+
+    .estimator-summary {
+      background: linear-gradient(145deg, var(--bg-soft-lavender) 0%, var(--bg-soft-pink) 100%);
+      border: 1.5px solid var(--border-soft);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .summary-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-top: 12px;
+      margin-top: 10px;
+      border-top: 1.5px dashed rgba(140, 92, 230, 0.28);
+      font-family: "Fredoka", sans-serif;
+      font-size: 1.55rem;
+      color: var(--text-main);
+    }
+
+    .summary-total strong {
+      color: var(--pink-600);
+    }
+
+    /* ==========================================================================
+       7. ORDER & RESERVATION FORM SECTION
+       ========================================================================== */
+    .order-layout {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .shop-info-card {
+      background: #ffffff;
+      border: 1.5px solid var(--border-soft);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+
+    .shop-info-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .shop-info-content {
+      padding: 24px;
+    }
+
+    .shop-info-content h3 {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+    }
+
+    .shop-info-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      color: var(--text-muted);
+      font-size: 0.94rem;
+      margin-top: 14px;
+    }
+
+    .order-form-card {
+      background: #ffffff;
+      border: 1.5px solid var(--border-soft);
+      border-radius: var(--radius-xl);
+      padding: 30px;
+      box-shadow: var(--shadow-card);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .form-full {
+      grid-column: 1 / -1;
+    }
+
+    .field-error {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--error-text);
+      min-height: 18px;
+    }
+
+    .input-invalid {
+      border-color: var(--error-border) !important;
+      background: var(--error-bg) !important;
+    }
+
+    .receipt-box {
+      margin-top: 22px;
+      padding: 20px;
+      border-radius: var(--radius-lg);
+      background: var(--success-bg);
+      border: 1.5px solid var(--success-border);
+      color: var(--success-text);
+      display: none;
+    }
+
+    .receipt-box.show {
+      display: block;
+      animation: popIn 0.3s ease;
+    }
+
+    @keyframes popIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ==========================================================================
+       8. SLIDE-OVER SWEET BAG DRAWER
+       ========================================================================== */
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(53, 41, 76, 0.36);
+      backdrop-filter: blur(4px);
+      z-index: 1050;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .drawer-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .bag-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(430px, 100vw);
+      height: 100vh;
+      background: #ffffff;
+      z-index: 1100;
+      box-shadow: -12px 0 36px rgba(53, 41, 76, 0.16);
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .bag-drawer.open {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      padding: 20px 22px;
+      border-bottom: 1px solid var(--border-soft);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--bg-soft-lavender);
+    }
+
+    .close-drawer-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: 1px solid var(--border-soft);
+      background: #ffffff;
+      color: var(--text-main);
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .drawer-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 18px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .bag-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      background: var(--bg-page);
+      border: 1px solid var(--border-soft);
+    }
+
+    .bag-item strong {
+      display: block;
+      font-size: 0.96rem;
+    }
+
+    .bag-item small {
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .bag-item-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .bag-item-actions button {
+      width: 26px;
+      height: 26px;
+      border-radius: 8px;
+      border: 1px solid var(--border-soft);
+      background: #ffffff;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .drawer-footer {
+      padding: 18px 22px 24px;
+      border-top: 1px solid var(--border-soft);
+      background: #ffffff;
+    }
+
+    .promo-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .promo-row input {
+      flex: 1;
+      padding: 10px 13px;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--border-soft);
+      font-size: 0.9rem;
+    }
+
+    .promo-msg {
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--lavender-600);
+    }
+
+    /* ==========================================================================
+       9. FOOTER
+       ========================================================================== */
+    .footer {
+      background: #2b213f;
+      color: #efe8ff;
+      padding: 54px 0 28px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 32px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .footer h3,
+    .footer h4 {
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    .footer p,
+    .footer li {
+      color: #cbbfe8;
+      font-size: 0.92rem;
+      list-style: none;
+      margin-bottom: 7px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .social-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 14px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      font-size: 0.84rem;
+      font-weight: 600;
+      transition: background 0.2s ease;
+    }
+
+    .social-pill:hover {
+      background: var(--pink-400);
+      color: #2b213f;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      padding-top: 22px;
+      font-size: 0.85rem;
+      color: #b4a5d6;
+    }
+
+    /* ==========================================================================
+       10. RESPONSIVE BREAKPOINTS
+       ========================================================================== */
+    @media (max-width: 960px) {
+      .hero-grid,
+      .estimator-box,
+      .order-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-grid,
+      .rates-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .nav-links {
+        position: fixed;
+        top: 74px;
+        left: 0;
+        right: 0;
+        background: #ffffff;
+        flex-direction: column;
+        padding: 20px;
+        gap: 14px;
+        border-bottom: 1px solid var(--border-soft);
+        box-shadow: 0 14px 28px rgba(53, 41, 76, 0.1);
+        display: none;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .theme-btn span.theme-label {
+        display: none;
+      }
+
+      .menu-grid,
+      .rates-grid,
+      .estimator-controls,
+      .form-grid,
+      .footer-grid,
+      .illustration-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-photo-frame img {
+        height: 245px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ========================================================================
+       NAVIGATION BAR
+       ======================================================================== -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="brand">
+        <span class="brand-icon" aria-hidden="true">❄</span>
+        <span class="brand-name">Glaciers Pastry Shop</span>
+      </a>
+
+      <nav aria-label="Primary Navigation">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home" class="active">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#rates">Rates &amp; Promos</a></li>
+          <li><a href="#order">Order &amp; Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" class="theme-btn" id="themeToggleBtn" aria-label="Switch pastel theme">
+          <span>🎀</span>
+          <span class="theme-label" id="themeLabel">Lavender Dream</span>
+        </button>
+
+        <button type="button" class="bag-btn" id="openBagBtn" aria-label="Open Sweet Bag">
+          <span>🛍️</span>
+          <span>Bag</span>
+          <span class="bag-count" id="bagCount">0</span>
+        </button>
+
+        <button type="button" class="menu-toggle" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+          ☰
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       HERO SECTION (HOME)
+       ======================================================================== -->
+  <section class="hero" id="home">
+    <div class="hero-orb orb-one"></div>
+    <div class="hero-orb orb-two"></div>
+
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">✨ Hand-Layered Crêpes &amp; Pillowy Mochi</div>
+        <h1 class="hero-title">
+          Sweetness in Every Layer at <span>Glaciers Pastry Shop</span>
+        </h1>
+        <p class="hero-tagline">
+          Delicate twenty-layer crêpe cakes, bouncy mochi desserts, and pastel tea-room treats crafted fresh daily for sweet cravings, barkada hangouts, and gift boxes.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#menu" class="btn-primary">Explore Crêpes &amp; Mochi</a>
+          <a href="#rates" class="btn-secondary">See Box Promos</a>
+        </div>
+
+        <div class="hero-perks">
+          <span>🍓 Fresh Daily Batches</span>
+          <span>🍡 Soft Chewy Mochi</span>
+          <span>🎁 Gift &amp; Party Boxes</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="hero-photo-frame">
+          <!-- Replace src with your own pastry photograph URL or local image path -->
+          <img
+            src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=1000&q=80"
+            alt="Layered pastel cream pastry cake on a porcelain plate"
+          />
+          <div class="hero-caption-pill">
+            <div>
+              <strong>Lavender Vanilla Mille Crêpe</strong>
+              <small>20 delicate crêpe sheets &amp; silky chantilly</small>
+            </div>
+            <span class="menu-price">₱185</span>
+          </div>
+        </div>
+
+        <!-- Adorable Custom Pastry Illustrations -->
+        <div class="illustration-strip">
+          <div class="mini-illustration-card">
+            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="40" cy="40" r="36" fill="#FFF0F6" />
+              <path d="M22 50C22 36 30 28 40 28C50 28 58 36 58 50C58 55 53 58 40 58C27 58 22 55 22 50Z" fill="#FFC2DC" stroke="#E5639C" stroke-width="2.5" />
+              <circle cx="34" cy="44" r="2.5" fill="#35294C" />
+              <circle cx="46" cy="44" r="2.5" fill="#35294C" />
+              <ellipse cx="29" cy="48" rx="3.5" ry="2" fill="#FF8EC0" opacity="0.7" />
+              <ellipse cx="51" cy="48" rx="3.5" ry="2" fill="#FF8EC0" opacity="0.7" />
+              <path d="M37 48C38.5 50 41.5 50 43 48" stroke="#35294C" stroke-width="2.2" stroke-linecap="round" />
+            </svg>
+            <div>
+              <strong>Sakura Mochi</strong>
+              <span>Soft &amp; bouncy bite</span>
+            </div>
+          </div>
+
+          <div class="mini-illustration-card">
+            <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="40" cy="40" r="36" fill="#F3ECFF" />
+              <path d="M20 52L40 26L60 52H20Z" fill="#E6D7FF" stroke="#8C5CE6" stroke-width="2.5" stroke-linejoin="round" />
+              <line x1="25" y1="45" x2="55" y2="45" stroke="#B38DF7" stroke-width="2" />
+              <line x1="29" y1="38" x2="51" y2="38" stroke="#FF8EC0" stroke-width="2" />
+              <circle cx="40" cy="24" r="5" fill="#FF8EC0" />
+            </svg>
+            <div>
+              <strong>Mille Crêpe</strong>
+              <span>Creamy layered slices</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       MENU SECTION (CRÊPES & MOCHI DESSERTS)
+       ======================================================================== -->
+  <section class="section" id="menu">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow">🍰 Pastry Counter</div>
+        <h2 class="section-title">Signature Crêpes &amp; Mochi Treats</h2>
+        <p class="section-subtitle">
+          Pick your quantity and add treats straight to your Sweet Bag. All prices below are easy to update in the code.
+        </p>
+      </div>
+
+      <div class="filter-bar" role="tablist" aria-label="Menu category filter">
+        <button type="button" class="filter-btn active" data-filter="all">All Treats</button>
+        <button type="button" class="filter-btn" data-filter="crepes">Mille &amp; Cream Crêpes</button>
+        <button type="button" class="filter-btn" data-filter="mochi">Mochi &amp; Mochi Cakes</button>
+      </div>
+
+      <div class="menu-grid" id="menuGrid">
+        <!-- Item 1 -->
+        <article class="menu-card" data-category="crepes">
+          <div class="menu-media">
+            <img
+              src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=800&q=80"
+              alt="Berry cream layered pastry slice"
+            />
+            <span class="menu-tag">Best Seller</span>
+          </div>
+          <div class="menu-body">
+            <div class="menu-top">
+              <h3>Lavender Berry Mille Crêpe</h3>
+              <span class="menu-price">₱185</span>
+            </div>
+            <p class="menu-desc">
+              Delicate crêpe layers stacked with vanilla bean cream, berry compote, and a light pastel glaze.
+            </p>
+            <div class="menu-controls">
+              <div class="qty-stepper">
+                <button type="button" class="step-minus" aria-label="Decrease quantity">−</button>
+                <span class="step-val">1</span>
+                <button type="button" class="step-plus" aria-label="Increase quantity">+</button>
+              </div>
+              <button
+                type="button"
+                class="add-bag-btn"
+                data-id="lavender-crepe"
+                data-name="Lavender Berry Mille Crêpe"
+                data-price="185"
+              >
+                Add to Bag
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 2 -->
+        <article class="menu-card" data-category="mochi">
+          <div class="menu-media">
+            <img
+              src="https://images.unsplash.com/photo-1582716401301-b2407dc7563f?auto=format&fit=crop&w=800&q=80"
+              alt="Soft sweet mochi dessert treats"
+            />
+            <span class="menu-tag">Chewy Favorite</span>
+          </div>
+          <div class="menu-body">
+            <div class="menu-top">
+              <h3>Sakura Strawberry Daifuku</h3>
+              <span class="menu-price">₱145</span>
+            </div>
+            <p class="menu-desc">
+              Pillowy pink mochi rice dough wrapped around sweet whipped cream and juicy strawberry filling.
+            </p>
+            <div class="menu-controls">
+              <div class="qty-stepper">
+                <button type="button" class="step-minus" aria-label="Decrease quantity">−</button>
+                <span class="step-val">1</span>
+                <button type="button" class="step-plus" aria-label="Increase quantity">+</button>
+              </div>
+              <button
+                type="button"
+                class="add-bag-btn"
+                data-id="sakura-mochi"
+                data-name="Sakura Strawberry Daifuku"
+                data-price="145"
+              >
+                Add to Bag
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 3 -->
+        <article class="menu-card" data-category="mochi">
+          <div class="menu-media">
+            <img
+              src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=800&q=80"
+              alt="Golden baked pastry cake squares"
+            />
+            <span class="menu-tag">Warm &amp; Bouncy</span>
+          </div>
+          <div class="menu-body">
+            <div class="menu-top">
+              <h3>Golden Butter Mochi Cake</h3>
+              <span class="menu-price">₱160</span>
+            </div>
+            <p class="menu-desc">
+              Crisp golden crust outside with a tender, chewy glutinous rice cake center and coconut-butter aroma.
+            </p>
+            <div class="menu-controls">
+              <div class="qty-stepper">
+                <button type="button" class="step-minus" aria-label="Decrease quantity">−</button>
+                <span class="step-val">1</span>
+                <button type="button" class="step-plus" aria-label="Increase quantity">+</button>
+              </div>
+              <button
+                type="button"
+                class="add-bag-btn"
+                data-id="butter-mochi-cake"
+                data-name="Golden Butter Mochi Cake"
+                data-price="160"
+              >
+                Add to Bag
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 4 -->
+        <article class="menu-card" data-category="crepes">
+          <div class="menu-media">
+            <img
+              src="https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&w=800&q=80"
+              alt="Sweet folded crepe dessert topped with cream and fruit"
+            />
+            <span class="menu-tag">Hand-Rolled</span>
+          </div>
+          <div class="menu-body">
+            <div class="menu-top">
+              <h3>Harajuku Mochi Cream Crêpe</h3>
+              <span class="menu-price">₱175</span>
+            </div>
+            <p class="menu-desc">
+              Soft folded crêpe cone filled with custard cream, mini mochi pearls, fresh berries, and pastel drizzle.
+            </p>
+            <div class="menu-controls">
+              <div class="qty-stepper">
+                <button type="button" class="step-minus" aria-label="Decrease quantity">−</button>
+                <span class="step-val">1</span>
+                <button type="button" class="step-plus" aria-label="Increase quantity">+</button>
+              </div>
+              <button
+                type="button"
+                class="add-bag-btn"
+                data-id="harajuku-crepe"
+                data-name="Harajuku Mochi Cream Crêpe"
+                data-price="175"
+              >
+                Add to Bag
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 5 -->
+        <article class="menu-card" data-category="mochi">
+          <div class="menu-media">
+            <img
+              src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=800&q=80"
+              alt="Pastel frosted cake slice on dessert plate"
+            />
+            <span class="menu-tag">Violet Glaze</span>
+          </div>
+          <div class="menu-body">
+            <div class="menu-top">
+              <h3>Ube Cream Mochi Cake</h3>
+              <span class="menu-price">₱195</span>
+            </div>
+            <p class="menu-desc">
+              Velvety purple yam mochi cake layered with sweet vanilla cream for a rich, nostalgic finish.
+            </p>
+            <div class="menu-controls">
+              <div class="qty-stepper">
+                <button type="button" class="step-minus" aria-label="Decrease quantity">−</button>
+                <span class="step-val">1</span>
+                <button type="button" class="step-plus" aria-label="Increase quantity">+</button>
+              </div>
+              <button
+                type="button"
+                class="add-bag-btn"
+                data-id="ube-mochi-cake"
+                data-name="Ube Cream Mochi Cake"
+                data-price="195"
+              >
+                Add to Bag
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 6 -->
+        <article class="menu-card" data-category="crepes">
+          <div class="menu-media">
+            <img
+              src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=800&q=80"
+              alt="Creamy pastel dessert cups and sweet treats"
+            />
+            <span class="menu-tag">Tea Pairing</span>
+          </div>
+          <div class="menu-body">
+            <div class="menu-top">
+              <h3>Peach Milk Crêpe Parfait</h3>
+              <span class="menu-price">₱170</span>
+            </div>
+            <p class="menu-desc">
+              Crêpe ribbons, sweet peach slices, whipped cream, and chewy mochi bites in a dessert cup.
+            </p>
+            <div class="menu-controls">
+              <div class="qty-stepper">
+                <button type="button" class="step-minus" aria-label="Decrease quantity">−</button>
+                <span class="step-val">1</span>
+                <button type="button" class="step-plus" aria-label="Increase quantity">+</button>
+              </div>
+              <button
+                type="button"
+                class="add-bag-btn"
+                data-id="peach-crepe-parfait"
+                data-name="Peach Milk Crêpe Parfait"
+                data-price="170"
+              >
+                Add to Bag
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       RATES, PROMOS & INTERACTIVE BOX ESTIMATOR
+       ======================================================================== -->
+  <section class="section section-alt" id="rates">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow">🎀 Bundles &amp; Savings</div>
+        <h2 class="section-title">Rates, Promos &amp; Box Estimator</h2>
+        <p class="section-subtitle">
+          Compare bundle rates or use the calculator below to estimate your custom crêpe and mochi box order.
+        </p>
+      </div>
+
+      <div class="rates-grid">
+        <div class="rate-card">
+          <h3>Single Treat &amp; Tea</h3>
+          <div class="rate-amount">₱145+ <span>/ item</span></div>
+          <ul class="rate-list">
+            <li>Any crêpe slice, roll, or mochi set</li>
+            <li>Freshly prepared to order</li>
+            <li>Great for solo afternoon snacks</li>
+          </ul>
+          <a href="#menu" class="btn-secondary">Pick Single Treats</a>
+        </div>
+
+        <div class="rate-card featured">
+          <h3>Student &amp; Barkada Box</h3>
+          <div class="rate-amount">₱680 <span>/ 4-pc box</span></div>
+          <ul class="rate-list">
+            <li>Mix of 2 crêpes &amp; 2 mochi desserts</li>
+            <li>15% off with promo code <strong>SWEET15</strong></li>
+            <li>Ideal for study dates &amp; group hangouts</li>
+          </ul>
+          <button type="button" class="btn-primary quick-box-btn" data-box="680">Estimate Barkada Box</button>
+        </div>
+
+        <div class="rate-card">
+          <h3>Celebration Party Platter</h3>
+          <div class="rate-amount">₱1,320 <span>/ 8-pc box</span></div>
+          <ul class="rate-list">
+            <li>Assorted mille crêpes &amp; mochi cakes</li>
+            <li>20% off with promo code <strong>BARKADA20</strong></li>
+            <li>Ribbon-tied pastel keepsake box</li>
+          </ul>
+          <button type="button" class="btn-secondary quick-box-btn" data-box="1320">Estimate Party Box</button>
+        </div>
+      </div>
+
+      <!-- Interactive Box Rate Calculator -->
+      <div class="estimator-box" aria-label="Interactive Box Rate Estimator">
+        <div>
+          <span class="eyebrow">🧮 Interactive Calculator</span>
+          <h3 style="font-size: 1.5rem; margin-bottom: 8px;">Custom Sweet Box Estimator</h3>
+          <p style="color: var(--text-muted); font-size: 0.94rem; margin-bottom: 20px;">
+            Adjust your box style, number of boxes, and promo tier to preview your estimated total.
+          </p>
+
+          <div class="estimator-controls">
+            <div class="field-group">
+              <label for="boxTypeSelect">Box Style</label>
+              <select id="boxTypeSelect">
+                <option value="350" data-label="Mini Duo Box (2 pcs)">Mini Duo Box — ₱350</option>
+                <option value="680" data-label="Barkada 4-Pc Box" selected>Barkada 4-Pc Box — ₱680</option>
+                <option value="1320" data-label="Celebration 8-Pc Box">Celebration 8-Pc Box — ₱1,320</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="boxQtyInput">Number of Boxes</label>
+              <input type="number" id="boxQtyInput" min="1" max="30" value="1" />
+            </div>
+
+            <div class="field-group form-full">
+              <label for="promoSelect">Promo Discount</label>
+              <select id="promoSelect">
+                <option value="0" selected>Regular Price (0% Off)</option>
+                <option value="0.15">Student / Tea-Time Promo (15% Off)</option>
+                <option value="0.20">Barkada / Event Bundle (20% Off)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="estimator-summary">
+          <div class="summary-row">
+            <span>Selected Box</span>
+            <strong id="estBoxName">Barkada 4-Pc Box × 1</strong>
+          </div>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="estSubtotal">₱680.00</span>
+          </div>
+          <div class="summary-row">
+            <span>Promo Discount</span>
+            <span id="estDiscount">−₱0.00</span>
+          </div>
+          <div class="summary-total">
+            <span>Estimated Total</span>
+            <strong id="estTotal">₱680.00</strong>
+          </div>
+          <button type="button" class="btn-primary" id="applyEstimateBtn" style="width: 100%; margin-top: 18px;">
+            Add Estimated Box to Bag
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       ORDER & CONTACT FORM SECTION
+       ======================================================================== -->
+  <section class="section" id="order">
+    <div class="container">
+      <div class="section-header">
+        <div class="eyebrow">💌 Pre-Orders &amp; Inquiries</div>
+        <h2 class="section-title">Order Ahead or Reserve a Table</h2>
+        <p class="section-subtitle">
+          Send a custom pastry inquiry, reserve pastel seating, or confirm your Sweet Bag pickup details.
+        </p>
+      </div>
+
+      <div class="order-layout">
+        <div class="shop-info-card">
+          <img
+            src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=900&q=80"
+            alt="Cozy pastel cafe seating with desserts and warm lighting"
+          />
+          <div class="shop-info-content">
+            <h3>Visit Glaciers Pastry Shop</h3>
+            <p style="color: var(--text-muted); font-size: 0.94rem;">
+              A calm, sweet-scented corner for freshly folded crêpes, chewy mochi cakes, and iced milk teas.
+            </p>
+            <ul class="shop-info-list">
+              <li><strong>📍 Location:</strong> Unit 4B, Pastel Arcade Lane, Downtown</li>
+              <li><strong>🕒 Hours:</strong> Daily, 10:00 AM – 9:00 PM</li>
+              <li><strong>📧 Email:</strong> hello@glacierspastry.ph</li>
+              <li><strong>📞 Phone:</strong> (036) 555-0194</li>
+            </ul>
+          </div>
+        </div>
+
+        <form class="order-form-card" id="orderForm" novalidate>
+          <h3 style="font-size: 1.35rem; margin-bottom: 18px;">Order &amp; Inquiry Form</h3>
+
+          <div class="form-grid">
+            <div class="field-group">
+              <label for="customerName">Your Name *</label>
+              <input type="text" id="customerName" name="customerName" placeholder="e.g., Camille Reyes" />
+              <span class="field-error" id="nameError"></span>
+            </div>
+
+            <div class="field-group">
+              <label for="customerEmail">Email Address *</label>
+              <input type="email" id="customerEmail" name="customerEmail" placeholder="camille@example.com" />
+              <span class="field-error" id="emailError"></span>
+            </div>
+
+            <div class="field-group">
+              <label for="fulfillmentType">Order / Visit Type</label>
+              <select id="fulfillmentType" name="fulfillmentType">
+                <option value="Shop Pickup">Shop Pickup</option>
+                <option value="Local Delivery">Local Delivery</option>
+                <option value="Table Reservation">Table Reservation</option>
+                <option value="Custom Box Inquiry">Custom Box Inquiry</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="preferredDate">Preferred Date &amp; Time *</label>
+              <input type="text" id="preferredDate" name="preferredDate" placeholder="e.g., Saturday, 3:30 PM" />
+              <span class="field-error" id="dateError"></span>
+            </div>
+
+            <div class="field-group form-full">
+              <label for="orderNotes">Crêpe / Mochi Notes &amp; Requests *</label>
+              <textarea
+                id="orderNotes"
+                name="orderNotes"
+                rows="4"
+                placeholder="Tell us your favorite crêpes, mochi flavors, box note, or table party size..."
+              ></textarea>
+              <span class="field-error" id="notesError"></span>
+            </div>
+
+            <div class="form-full">
+              <button type="submit" class="btn-primary" style="width: 100%;">
+                Submit Order / Inquiry
+              </button>
+            </div>
+          </div>
+
+          <!-- Confirmation Receipt Box -->
+          <div class="receipt-box" id="confirmationBox" role="status" aria-live="polite">
+            <strong style="font-size: 1.05rem; display: block; margin-bottom: 6px;">
+              ✅ Request Received by Glaciers Pastry Shop!
+            </strong>
+            <div id="confirmationDetails" style="font-size: 0.92rem;"></div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================================
+       SLIDE-OVER SWEET BAG DRAWER
+       ======================================================================== -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="bag-drawer" id="bagDrawer" aria-label="Sweet Bag">
+    <div class="drawer-header">
+      <div>
+        <h3 style="font-size: 1.2rem;">Your Sweet Bag</h3>
+        <small style="color: var(--text-muted); font-weight: 600;">Freshly packed in pastel boxes</small>
+      </div>
+      <button type="button" class="close-drawer-btn" id="closeBagBtn" aria-label="Close Sweet Bag">✕</button>
+    </div>
+
+    <div class="drawer-items" id="bagItemsContainer">
+      <p style="color: var(--text-muted); text-align: center; padding: 36px 12px;">
+        Your Sweet Bag is empty. Add crêpes, mochi treats, or a custom box!
+      </p>
+    </div>
+
+    <div class="drawer-footer">
+      <div class="promo-row">
+        <input type="text" id="bagPromoInput" placeholder="Promo code (SWEET15 or BARKADA20)" />
+        <button type="button" class="btn-secondary" id="applyBagPromoBtn" style="padding: 10px 14px; font-size: 0.86rem;">
+          Apply
+        </button>
+      </div>
+      <div class="promo-msg" id="bagPromoMsg"></div>
+
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <span id="bagSubtotal">₱0.00</span>
+      </div>
+      <div class="summary-row">
+        <span>Discount</span>
+        <span id="bagDiscount">−₱0.00</span>
+      </div>
+      <div class="summary-total">
+        <span>Total</span>
+        <strong id="bagTotal">₱0.00</strong>
+      </div>
+
+      <button type="button" class="btn-primary" id="sendBagToFormBtn" style="width: 100%; margin-top: 14px;">
+        Proceed to Order Form
+      </button>
+    </div>
+  </aside>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>Glaciers Pastry Shop</h3>
+          <p>
+            Handcrafted crêpes, chewy mochi desserts, and pastel sweet boxes made fresh every day.
+          </p>
+          <div class="social-links">
+            <a href="#home" class="social-pill">Instagram</a>
+            <a href="#home" class="social-pill">TikTok</a>
+            <a href="#order" class="social-pill">Facebook</a>
+          </div>
+        </div>
+
+        <div>
+          <h4>Operating Hours</h4>
+          <ul>
+            <li>Monday – Friday: 10:00 AM – 8:30 PM</li>
+            <li>Saturday – Sunday: 10:00 AM – 9:30 PM</li>
+            <li>Custom Pre-Orders: Open Daily</li>
+          </ul>
+        </div>
+
+        <div>
+          <h4>Location &amp; Contact</h4>
+          <ul>
+            <li>Unit 4B, Pastel Arcade Lane</li>
+            <li>Downtown District, City</li>
+            <li>hello@glacierspastry.ph</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        &copy; <span id="yearSpan">2026</span> Glaciers Pastry Shop. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================================================
+       JAVASCRIPT: THEME TOGGLE, MENU STEPPERS, CALCULATOR, BAG & VALIDATION
+       ======================================================================== -->
+  <script>
+    /* ------------------------------------------------------------------------
+       1. THEME MODE SWITCHER (Lavender Dream vs. Strawberry Milk)
+       ------------------------------------------------------------------------ */
+    const themeToggleBtn = document.getElementById("themeToggleBtn");
+    const themeLabel = document.getElementById("themeLabel");
+
+    themeToggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("theme-strawberry");
+      const isStrawberry = document.body.classList.contains("theme-strawberry");
+      themeLabel.textContent = isStrawberry ? "Strawberry Milk" : "Lavender Dream";
+    });
+
+    /* ------------------------------------------------------------------------
+       2. MOBILE NAVIGATION TOGGLE & ACTIVE LINK HIGHLIGHT
+       ------------------------------------------------------------------------ */
+    const mobileMenuBtn = document.getElementById("mobileMenuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    mobileMenuBtn.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      mobileMenuBtn.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        mobileMenuBtn.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    /* ------------------------------------------------------------------------
+       3. MENU CATEGORY FILTER & QUANTITY STEPPERS
+       ------------------------------------------------------------------------ */
+    const filterBtns = document.querySelectorAll(".filter-btn");
+    const menuCards = document.querySelectorAll(".menu-card");
+
+    filterBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        filterBtns.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+
+        const filter = btn.dataset.filter;
+        menuCards.forEach((card) => {
+          const matches = filter === "all" || card.dataset.category === filter;
+          card.style.display = matches ? "flex" : "none";
+        });
+      });
+    });
+
+    document.querySelectorAll(".menu-card").forEach((card) => {
+      const minusBtn = card.querySelector(".step-minus");
+      const plusBtn = card.querySelector(".step-plus");
+      const valSpan = card.querySelector(".step-val");
+      const addBtn = card.querySelector(".add-bag-btn");
+
+      minusBtn.addEventListener("click", () => {
+        const current = parseInt(valSpan.textContent, 10) || 1;
+        if (current > 1) valSpan.textContent = String(current - 1);
+      });
+
+      plusBtn.addEventListener("click", () => {
+        const current = parseInt(valSpan.textContent, 10) || 1;
+        if (current < 20) valSpan.textContent = String(current + 1);
+      });
+
+      addBtn.addEventListener("click", () => {
+        const qty = parseInt(valSpan.textContent, 10) || 1;
+        addToBag({
+          id: addBtn.dataset.id,
+          name: addBtn.dataset.name,
+          price: Number(addBtn.dataset.price),
+          qty,
+        });
+        valSpan.textContent = "1";
+        openBag();
+      });
+    });
+
+    /* ------------------------------------------------------------------------
+       4. SWEET BAG STATE & DRAWER CONTROLS
+       ------------------------------------------------------------------------ */
+    let bagItems = [];
+    let bagDiscountRate = 0;
+
+    const bagDrawer = document.getElementById("bagDrawer");
+    const drawerBackdrop = document.getElementById("drawerBackdrop");
+    const openBagBtn = document.getElementById("openBagBtn");
+    const closeBagBtn = document.getElementById("closeBagBtn");
+    const bagItemsContainer = document.getElementById("bagItemsContainer");
+    const bagCountEl = document.getElementById("bagCount");
+    const bagSubtotalEl = document.getElementById("bagSubtotal");
+    const bagDiscountEl = document.getElementById("bagDiscount");
+    const bagTotalEl = document.getElementById("bagTotal");
+
+    function formatPeso(amount) {
+      return "₱" + amount.toLocaleString("en-PH", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      });
+    }
+
+    function openBag() {
+      bagDrawer.classList.add("open");
+      drawerBackdrop.classList.add("open");
+    }
+
+    function closeBag() {
+      bagDrawer.classList.remove("open");
+      drawerBackdrop.classList.remove("open");
+    }
+
+    openBagBtn.addEventListener("click", openBag);
+    closeBagBtn.addEventListener("click", closeBag);
+    drawerBackdrop.addEventListener("click", closeBag);
+
+    function addToBag(item) {
+      const existing = bagItems.find((entry) => entry.id === item.id);
+      if (existing) {
+        existing.qty += item.qty;
+      } else {
+        bagItems.push({ ...item });
+      }
+      renderBag();
+    }
+
+    function updateBagQty(id, delta) {
+      const target = bagItems.find((entry) => entry.id === id);
+      if (!target) return;
+      target.qty += delta;
+      if (target.qty <= 0) {
+        bagItems = bagItems.filter((entry) => entry.id !== id);
+      }
+      renderBag();
+    }
+
+    function renderBag() {
+      const totalQty = bagItems.reduce((sum, item) => sum + item.qty, 0);
+      bagCountEl.textContent = String(totalQty);
+
+      if (bagItems.length === 0) {
+        bagItemsContainer.innerHTML =
+          '<p style="color: var(--text-muted); text-align: center; padding: 36px 12px;">Your Sweet Bag is empty. Add crêpes, mochi treats, or a custom box!</p>';
+      } else {
+        bagItemsContainer.innerHTML = bagItems
+          .map(
+            (item) => `
+            <div class="bag-item">
+              <div>
+                <strong>${item.name}</strong>
+                <small>${formatPeso(item.price)} each</small>
+              </div>
+              <div class="bag-item-actions">
+                <button type="button" onclick="updateBagQty('${item.id}', -1)" aria-label="Decrease">−</button>
+                <span style="min-width: 20px; text-align: center; font-weight: 700;">${item.qty}</span>
+                <button type="button" onclick="updateBagQty('${item.id}', 1)" aria-label="Increase">+</button>
+              </div>
+            </div>
+          `
+          )
+          .join("");
+      }
+
+      const subtotal = bagItems.reduce((sum, item) => sum + item.price * item.qty, 0);
+      const discount = subtotal * bagDiscountRate;
+      const total = Math.max(0, subtotal - discount);
+
+      bagSubtotalEl.textContent = formatPeso(subtotal);
+      bagDiscountEl.textContent = "−" + formatPeso(discount);
+      bagTotalEl.textContent = formatPeso(total);
+    }
+
+    // Promo codes in Sweet Bag
+    const bagPromoInput = document.getElementById("bagPromoInput");
+    const applyBagPromoBtn = document.getElementById("applyBagPromoBtn");
+    const bagPromoMsg = document.getElementById("bagPromoMsg");
+
+    applyBagPromoBtn.addEventListener("click", () => {
+      const code = bagPromoInput.value.trim().toUpperCase();
+      if (code === "SWEET15") {
+        bagDiscountRate = 0.15;
+        bagPromoMsg.textContent = "SWEET15 applied: 15% off your Sweet Bag!";
+      } else if (code === "BARKADA20") {
+        bagDiscountRate = 0.2;
+        bagPromoMsg.textContent = "BARKADA20 applied: 20% off your Sweet Bag!";
+      } else {
+        bagDiscountRate = 0;
+        bagPromoMsg.textContent = "Try code SWEET15 (15% off) or BARKADA20 (20% off).";
+      }
+      renderBag();
+    });
+
+    // Transfer Sweet Bag summary to Order Form
+    const sendBagToFormBtn = document.getElementById("sendBagToFormBtn");
+    const orderNotesInput = document.getElementById("orderNotes");
+
+    sendBagToFormBtn.addEventListener("click", () => {
+      if (bagItems.length > 0) {
+        const summaryText = bagItems
+          .map((item) => `${item.qty}x ${item.name} (${formatPeso(item.price * item.qty)})`)
+          .join(", ");
+        orderNotesInput.value = `Sweet Bag Order: ${summaryText} | Total: ${bagTotalEl.textContent}`;
+      }
+      closeBag();
+      document.getElementById("order").scrollIntoView({ behavior: "smooth" });
+    });
+
+    /* ------------------------------------------------------------------------
+       5. CUSTOM BOX RATE CALCULATOR
+       ------------------------------------------------------------------------ */
+    const boxTypeSelect = document.getElementById("boxTypeSelect");
+    const boxQtyInput = document.getElementById("boxQtyInput");
+    const promoSelect = document.getElementById("promoSelect");
+    const estBoxName = document.getElementById("estBoxName");
+    const estSubtotal = document.getElementById("estSubtotal");
+    const estDiscount = document.getElementById("estDiscount");
+    const estTotal = document.getElementById("estTotal");
+    const applyEstimateBtn = document.getElementById("applyEstimateBtn");
+
+    function updateEstimator() {
+      const unitPrice = Number(boxTypeSelect.value);
+      const boxLabel = boxTypeSelect.selectedOptions[0].dataset.label;
+      const qty = Math.max(1, parseInt(boxQtyInput.value, 10) || 1);
+      const discountRate = Number(promoSelect.value);
+
+      const subtotal = unitPrice * qty;
+      const discount = subtotal * discountRate;
+      const finalTotal = subtotal - discount;
+
+      estBoxName.textContent = `${boxLabel} × ${qty}`;
+      estSubtotal.textContent = formatPeso(subtotal);
+      estDiscount.textContent = "−" + formatPeso(discount);
+      estTotal.textContent = formatPeso(finalTotal);
+    }
+
+    boxTypeSelect.addEventListener("change", updateEstimator);
+    boxQtyInput.addEventListener("input", updateEstimator);
+    promoSelect.addEventListener("change", updateEstimator);
+
+    document.querySelectorAll(".quick-box-btn").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        boxTypeSelect.value = btn.dataset.box;
+        updateEstimator();
+        document.querySelector(".estimator-box").scrollIntoView({ behavior: "smooth", block: "center" });
+      });
+    });
+
+    applyEstimateBtn.addEventListener("click", () => {
+      const unitPrice = Number(boxTypeSelect.value);
+      const boxLabel = boxTypeSelect.selectedOptions[0].dataset.label;
+      const qty = Math.max(1, parseInt(boxQtyInput.value, 10) || 1);
+      addToBag({
+        id: "box-" + unitPrice,
+        name: boxLabel,
+        price: unitPrice,
+        qty,
+      });
+      openBag();
+    });
+
+    updateEstimator();
+
+    /* ------------------------------------------------------------------------
+       6. ORDER & INQUIRY FORM VALIDATION + CONFIRMATION RECEIPT
+       ------------------------------------------------------------------------ */
+    const orderForm = document.getElementById("orderForm");
+    const customerName = document.getElementById("customerName");
+    const customerEmail = document.getElementById("customerEmail");
+    const fulfillmentType = document.getElementById("fulfillmentType");
+    const preferredDate = document.getElementById("preferredDate");
+    const confirmationBox = document.getElementById("confirmationBox");
+    const confirmationDetails = document.getElementById("confirmationDetails");
+
+    const nameError = document.getElementById("nameError");
+    const emailError = document.getElementById("emailError");
+    const dateError = document.getElementById("dateError");
+    const notesError = document.getElementById("notesError");
+
+    orderForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      let isValid = true;
+      [customerName, customerEmail, preferredDate, orderNotesInput].forEach((el) =>
+        el.classList.remove("input-invalid")
+      );
+      [nameError, emailError, dateError, notesError].forEach((el) => (el.textContent = ""));
+
+      if (customerName.value.trim().length < 2) {
+        nameError.textContent = "Please enter your name.";
+        customerName.classList.add("input-invalid");
+        isValid = false;
+      }
+
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(customerEmail.value.trim())) {
+        emailError.textContent = "Please enter a valid email address.";
+        customerEmail.classList.add("input-invalid");
+        isValid = false;
+      }
+
+      if (preferredDate.value.trim().length < 3) {
+        dateError.textContent = "Please enter your preferred date or time.";
+        preferredDate.classList.add("input-invalid");
+        isValid = false;
+      }
+
+      if (orderNotesInput.value.trim().length < 5) {
+        notesError.textContent = "Please share what treats or details you have in mind.";
+        orderNotesInput.classList.add("input-invalid");
+        isValid = false;
+      }
+
+      if (!isValid) {
+        confirmationBox.classList.remove("show");
+        return;
+      }
+
+      const refCode = "GPS-" + Math.floor(1000 + Math.random() * 9000);
+      confirmationDetails.innerHTML = `
+        <p><strong>Reference:</strong> ${refCode}</p>
+        <p><strong>Guest:</strong> ${customerName.value.trim()} (${customerEmail.value.trim()})</p>
+        <p><strong>Type &amp; Schedule:</strong> ${fulfillmentType.value} — ${preferredDate.value.trim()}</p>
+        <p><strong>Notes:</strong> ${orderNotesInput.value.trim()}</p>
+      `;
+      confirmationBox.classList.add("show");
+      orderForm.reset();
+    });
+
+    // Current year in footer
+    document.getElementById("yearSpan").textContent = String(new Date().getFullYear());
+  </script>
+</body>
+</html>
